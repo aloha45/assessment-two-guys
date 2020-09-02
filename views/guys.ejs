@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><%= title %></h1>
+        <form action="/guys" method="POST">
+            <label>Guy name:</label>
+            <input required type="text" name="name">
+            <label>Sexy?</label>
+            <input type="checkbox" name="sexy">
+            <input type="submit" value="Submit">
+        </form>
+        <ul>
+        <% guys.forEach(function(g) { %>
+              <li><%= g.name %> - <%= g.sexy ? 'Sexy' : 'Not Sexy' %><form action="/guys/<%= g.id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+            </form>
+            <a href="/guys/<%= g.id %>">Update</a></li>
+              <% }) %>
+            </ul>
+</body>
+</html>

@@ -15,12 +15,16 @@
             <input type="submit" value="Submit">
         </form>
         <ul>
-        <% guys.forEach(function(g) { %>
+          <% if (guys.length) { %>
+            <% guys.forEach(function(g) { %>
               <li><%= g.name %> - <%= g.sexy ? 'Sexy' : 'Not Sexy' %><form action="/guys/<%= g.id %>?_method=DELETE" method="POST">
-            <button type="submit">X</button>
-            </form>
-            <a href="/guys/<%= g.id %>">Update</a></li>
+                <button type="submit">X</button>
+              </form>
+              <a href="/guys/<%= g.id %>">Update</a></li>
               <% }) %>
             </ul>
+          <% } else { %>
+            <h5>There Are No Guys</h5>
+         <% } %>
 </body>
 </html>
